@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAE - Sistema de Acompanhamento Educacional</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/cadastro.css">
+    <link rel="icon" href="assets/img/SAE e Logo (1).png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container-Nav">
+            <div class="logo">
+                <img src="assets/img/logo_horizontal_ifsudestemg(2).png" alt="" srcset="" class="logo">
+            </div>
+            <div class="profile">
+                <i class="fas fa-user-circle" aria-hidden="true" style="font-size: 30px;"></i>
+                <div class="profile-name">João Silva</div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="main-content">
+            <div class="performance-section">
+                <div class="historico">
+                    <div class="head-main-content">
+                        <h2 class="titulo servidor">Pedido de Cadastro Servidores</h2>
+                        <h2 class="titulo responsavel">Pedido de Cadastro Responsáveis</h2>
+                        <button>Voltar</button>
+                    </div>
+                    <div class="historico">
+                        <table class="servidor">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Cargo</th>
+                                    <th>Email</th>
+                                    <th>Data</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Ana Silva</td>
+                                    <td>Professora</td>
+                                    <td>anaSilva@gmail.com</td>
+                                    <td>01/09/2024</td>
+                                    <td><button class="btn-details-agendamento" data-record="1">Aceitar</button>
+                                        <button class="btn-details-agendamento" data-record="1"
+                                            style="background-color: var(--red-color);">Recursar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="responsavel">
+                            <thead>
+                                <tr>
+                                    <th>Responsável</th>
+                                    <th>Aluno</th>
+                                    <th>Matricula</th>
+                                    <th>Turma</th>
+                                    <th>Email do Responsável</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Ana Silva</td>
+                                    <td>João Silva</td>
+                                    <td>2024004040</td>
+                                    <td>1 ano D</td>
+                                    <td>anaSilva@gmail.com</td>
+                                    <td><button class="btn-details-agendamento" data-record="1">Aceitar</button>
+                                        <button class="btn-details-agendamento" data-record="1"
+                                            style="background-color: var(--red-color);">Recursar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="historico">
+                        <h2 class="titulo servidor">Cadastrados Servidores</h2>
+                        <h2 class="titulo responsavel">Cadastrados Responsáveis</h2>
+                        <div class="historico">
+                            <table class="servidor">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Cargo</th>
+                                        <th>Email</th>
+                                        <th>Data</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Lucas Pereira</td>
+                                        <td>Coordenador</td>
+                                        <td>lucasPereira@gmail.com</td>
+                                        <td>01/09/2024</td>
+                                        <td><button class="btn-details" data-record="1">Detalhes</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Maria Cunha</td>
+                                        <TD>Professora</TD>
+                                        <td>mariaCunha@gmail.com</td>
+                                        <td>02/09/2024</td>
+                                        <td><button class="btn-details" data-record="2">Detalhes</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="responsavel">
+                                <thead>
+                                    <tr>
+                                        <th>Responsável</th>
+                                        <th>Aluno</th>
+                                        <th>Matricula</th>
+                                        <th>Turma</th>
+                                        <th>Email do Responsável</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Lucas Pereira</td>
+                                        <td>Maria Pereira</td>
+                                        <td>2023004040</td>
+                                        <td>2 ano E</td>
+                                        <td>lucasPereira@gmail.com</td>
+                                        <td><button class="btn-details" data-record="1">Detalhes</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Maria Cunha</td>
+                                        <TD>Clara Cunha</TD>
+                                        <td>2024004040</td>
+                                        <td>1 ano D</td>
+                                        <td>mariaCunha@gmail.com</td>
+                                        <td><button class="btn-details" data-record="2">Detalhes</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-wrapper" id="detailsModalWrapper">
+            <div class="modal" id="modal-detalhes">
+                <div class="head">
+                    <div class="headEspaco">
+                        <h2 class="titulo">Detalhes</h2>
+                        <button class="btn-close" onclick="closeDetailsModal()"></button>
+                    </div>
+                </div>
+                <div class="content">
+                    <div id="detailsContent">
+                    </div>
+                    <a href="registros.html"><button style="margin-left: 20px;">Ver Registros</button></a>
+                    <a href="agendamentos.html"><button>Ver Agendamentos</button></a>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function obterParametro(nome) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(nome);
+            }
+            const usuario = obterParametro('user');
+            const servidor = document.getElementsByClassName('servidor')
+            const responsavel = document.getElementsByClassName('responsavel')
+            if (usuario == 'Servidor') {
+                for (let i = 0; i < servidor.length; i++) {
+                    servidor[i].setAttribute('style', 'display:block');
+                }
+                for (let i = 0; i < responsavel.length; i++) {
+                    responsavel[i].setAttribute('style', 'display:none;');
+                }
+            } else if (usuario == 'Responsavel') {
+                for (let i = 0; i < servidor.length; i++) {
+                    servidor[i].setAttribute('style', 'display:none;');
+                }
+                for (let i = 0; i < responsavel.length; i++) {
+                    responsavel[i].setAttribute('style', 'display:block;');
+                }
+            }
+            $(document).ready(function () {
+                var recordsServidor = {
+                    1: {
+                        nome: 'Lucas Perreira',
+                        cargo: 'Coordenador',
+                        data: '01/09/2024',
+                        email: 'lucasPerreira@gmail.com',
+                        turma: '1 ano A, 2 ano A, 3 ano A'
+                    },
+                    2: {
+                        nome: 'Maria Cunha',
+                        cargo: 'Professora',
+                        data: '02/09/2024',
+                        email: 'mariaCunha@gmail.com',
+                        turma: '2 ano B, 2 ano C, 3 ano A, 3 ano B'
+                    }
+                };
+
+                var recordsResponsavel = {
+                    1: {
+                        nome: 'Lucas Pereira',
+                        aluno: 'Maria Pereira',
+                        matricula: '2023004040',
+                        turma: '2 ano E',
+                        email: 'lucasPereira@gmail.com'
+                    },
+                    2: {
+                        nome: 'Maria Cunha',
+                        aluno: 'Maria Cunha',
+                        matricula: '2023004040',
+                        turma: '1 ano D',
+                        email: 'mariaCunha@gmail.com'
+                    }
+
+                }
+
+
+
+                $('.btn-details').click(function () {
+                    var recordId = $(this).data('record');
+                    if (usuario == 'Servidor') {
+                        var recordServidor = recordsServidor[recordId];
+                        var detailsHtml = `
+                        <p><strong>Nome:</strong> ${recordServidor.nome}</p>
+                        <p><strong>Cargo:</strong> ${recordServidor.cargo}</p>
+                        <p><strong>Data:</strong> ${recordServidor.data}</p>
+                        <p><strong>Email:</strong> ${recordResponsavel.email}</p>
+                        <p><strong>Turmas:</strong> ${recordServidor.turma}</p>`
+                    } else {
+                        var recordResponsavel = recordsResponsavel[recordId];
+                        var detailsHtml = `
+                        <p><strong>Responsavel:</strong> ${recordResponsavel.nome}</p>
+                        <p><strong>Aluno::</strong> ${recordResponsavel.aluno}</p>
+                        <p><strong>Matricula:</strong> ${recordResponsavel.matricula}</p>
+                        <p><strong>Turma:</strong> ${recordResponsavel.turma}</p>
+                        <p><strong>Email:</strong> ${recordResponsavel.email}</p>`
+                    }
+                    $('#detailsContent').html(detailsHtml);
+                    $('#detailsModalWrapper').addClass('open');
+                });
+
+
+                $('.btn').click(function () {
+                    $('#formModalWrapper').addClass('open');
+                    return false;
+                });
+            });
+
+            function closeDetailsModal() {
+                $('#detailsModalWrapper').removeClass('open');
+            }
+        </script>
+</body>
+
+</html>

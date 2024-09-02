@@ -1,0 +1,128 @@
+@charset "UTF-8";
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: var(--white-color);
+    border-radius: 10px;
+    box-shadow: 0 0 20px var(--shadow-color);
+    overflow: hidden;
+    width: 90%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.illustration {
+    flex: 1;
+    background-color: var(--gray-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.illustration img {
+    max-width: 100%;
+    height: auto;
+}
+
+.form {
+    flex: 1;
+    padding: 40px;
+}
+
+h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input , select {
+    margin: 10px 0;
+    padding: 12px;
+    border: 1px solid var(--gray-dark);
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+}
+
+input:focus , select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+button {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--secondary-color);
+}
+
+.google-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white-color);
+    border: 1px solid var(--gray-dark);
+    color: var(--font-color);
+    margin-top: 10px;
+}
+
+.google-login img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.google-login:hover {
+    background-color: var(--gray-color);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    margin-top: 10px;
+    text-align: center;
+}
+
+hr {
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid var(--gray-dark);
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

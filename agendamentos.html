@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAE - Sistema de Acompanhamento Educacional</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/cadastro.css">
+    <link rel="icon" href="assets/img/SAE e Logo (1).png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container-Nav">
+            <div class="logo">
+                <img src="assets/img/logo_horizontal_ifsudestemg(2).png" alt="" srcset="" class="logo">
+            </div>
+            <div class="profile">
+                <i class="fas fa-user-circle" aria-hidden="true" style="font-size: 30px;"></i>
+                <div class="profile-name">João Silva</div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="main-content">
+            <div class="performance-section">
+                <div class="historico">
+                    <div class="head-main-content">
+                        <h2 class="titulo">Agendamento</h2>
+                        <button>Voltar</button>
+                    </div>
+                    <div class="historico">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Aluno</th>
+                                    <th>Turma</th>
+                                    <th>Participantes</th>
+                                    <th>Data</th>
+                                    <th>Hora</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Ana Silva</td>
+                                    <td>1 ano A</td>
+                                    <td>Aluno e Psicologa</td>
+                                    <td>01/09/2024</td>
+                                    <td>10:00</td>
+                                    <td><button class="btn-details" data-record="1">Detalhes</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Lucas Pereira</td>
+                                    <TD>2 ano D</TD>
+                                    <td>Aluno e coordenador</td>
+                                    <td>02/09/2024</td>
+                                    <td>14:00</td>
+                                    <td><button class="btn-details" data-record="2">Detalhes</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button class="btn-novo-registro" onclick="openFormModal(2)">Realizar Agendamento</button>
+                    <a href="registros.html"><button>Vizualizar Registros</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-wrapper" id="detailsModalWrapper">
+        <div class="modal" id="modal-detalhes">
+            <div class="head">
+                <div class="headEspaco">
+                    <h2 class="titulo">Detalhes do Registro</h2>
+                    <button class="btn-close" onclick="closeDetailsModal()"></button>
+                </div>
+            </div>
+            <div class="content">
+                <div id="detailsContent">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-wrapper" id="formModalWrapper">
+        <div class="modal" id="modal-form">
+            <div class="head">
+                <div class="headEspaco">
+                    <h2 class="titulo tituloModal"> </h2>
+                    <button class="btn-close" onclick="closeFormModal()"></button>
+                </div>
+            </div>
+            <div class="content">
+                <form method="POST">
+                    <div class="tuma-aluno">
+                        <div class="form-group">
+                            <label for="turma">Turma:</label>
+                            <select id="turma" name="turma" required>
+                                <option value="">Selecione a turma</option>
+                                <option value="1anoA">1º Ano - A</option>
+                                <option value="1anoB">1º Ano - B</option>
+                                <option value="2anoA">2º Ano - A</option>
+                                <option value="2anoB">2º Ano - B</option>
+                                <option value="3anoA">3º Ano - A</option>
+                                <option value="3anoB">3º Ano - B</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="divAluno">
+                            <label for="aluno">Aluno:</label>
+                            <div class="container-select" id="container-aluno">
+                                <select id="aluno" name="aluno[]" style="margin-top: 10px;" disabled required>
+                                    <option value="">Selecione o aluno</option>
+                                    <option value="joao">João da Silva</option>
+                                    <option value="maria">Maria Oliveira</option>
+                                    <option value="pedro">Pedro Santos</option>
+                                    <option value="ana">Ana Costa</option>
+                                    <option value="lucas">Lucas Ferreira</option>
+                                </select>
+                                <i class="fas fa-user-times remove-aluno icone-aluno" id="remove-aluno"
+                                    style="cursor: pointer;"></i>
+                            </div>
+                        </div>
+                        <div class="form-group icone-aluno" id="add-aluno-icon" title="Adicionar aluno"
+                            style=" margin-left: 30px;">
+                            <i class="fas fa-user-plus" id="add-aluno"
+                                style="cursor: pointer; width: 10px; display: none;"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-agendamento">
+                            <label for="participantes">Participantes:</label>
+                            <input type="text" name="participantes" id="participantes">
+                        </div>
+                    </div>
+                    <div class="form-group form-agendamento">
+                        <label for="agendamento">Solicitar Presença do Responsável:</label>
+                        <div class="radio-group">
+                            <input type="radio" name="agendamento" id="sim" value="Sim">
+                            <label for="sim">Sim</label>
+
+                            <input type="radio" name="agendamento" id="nao" value="Não">
+                            <label for="nao">Não</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-agendamento">
+                            <label for="dataAgendamento">Data:</label>
+                            <input type="date" name="dataAgendamento" id="data">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-agendamento">
+                            <label for="horaAgendamento">Hora:</label>
+                            <input type="time" name="horaAgendamento" id="time">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-agendamento">
+                            <label for="localAgendamento">Local:</label>
+                            <input type="text" name="localAgendamento" id="data">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">Enviar Registro</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+
+            var records = {
+                1: {
+                    data: '01/09/2024',
+                    aluno: 'Ana Silva',
+                    turma: '1 ano A',
+                    tipo: 'Advertência',
+                    descricao: 'Atraso frequente nas aulas',
+                    encaminhadoPara: 'Coordenação',
+                    agendamentoData: '10/09/2024',
+                    agendamentoHora: '10:00',
+                    participantes: 'Aluno e psicologa',
+                    local: 'Prédio central - Sala 05'
+                },
+                2: {
+                    data: '02/09/2024',
+                    aluno: 'Lucas Pereira',
+                    turma: '2 ano D',
+                    tipo: 'Elogio',
+                    descricao: 'Excelente desempenho em projeto',
+                    encaminhadoPara: 'Direção'
+                }
+            };
+
+            $('.btn-details').click(function () {
+                var recordId = $(this).data('record');
+                var record = records[recordId];
+                var detailsHtml = `
+                    <p><strong>Data:</strong> ${record.data}</p>
+                    <p><strong>Aluno:</strong> ${record.aluno}</p>
+                    <p><strong>Turma:</strong> ${record.turma}</p>
+                    <p><strong>Tipo:</strong> ${record.tipo}</p>
+                    <p><strong>Descrição:</strong> ${record.descricao}</p>
+                    <p><strong>Encaminhado Para:</strong> ${record.encaminhadoPara}</p>
+                    <p><strong>Data agendamento:</strong> ${record.agendamentoData}</p>
+                    <p><strong>Hora agendamento:</strong> ${record.agendamentoHora}</p>
+                    <p><strong>Participantes:</strong> ${record.participantes}</p>
+                    <p><strong>Local:</strong> ${record.local}</p>`
+
+                $('#detailsContent').html(detailsHtml);
+                $('#detailsModalWrapper').addClass('open');
+            });
+
+            $('.btn').click(function () {
+                $('#formModalWrapper').addClass('open');
+                return false;
+            });
+        });
+
+        function closeDetailsModal() {
+            $('#detailsModalWrapper').removeClass('open');
+        }
+
+        function openFormModal(modal) {
+            var titulo = 'Novo Agendamento'
+            $('#formModalWrapper').addClass('open');
+            const formAgendamentoElements = document.querySelectorAll(".form-agendamento");
+            const formRegistro = document.querySelectorAll(".registro")
+            radioSim.checked = true;
+            formAgendamentoElements.forEach(element => {
+                element.style.display = "block";
+            });
+            formRegistro.forEach(element => {
+                element.style.display = "none"
+            })
+            $('.tituloModal').html(titulo);
+        }
+
+        function closeFormModal() {
+            $('#formModalWrapper').removeClass('open');
+        }
+        const radioSim = document.getElementById("sim");
+        const radioNao = document.getElementById("nao");
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const formAgendamentoElements = document.querySelectorAll(".form-agendamento");
+            function toggleAgendamento() {
+                if (!radioSim.checked) {
+                    formAgendamentoElements.forEach(element => {
+                        element.style.display = "none";
+                    });
+                } else {
+                    formAgendamentoElements.forEach(element => {
+                        element.style.display = "block";
+                    });
+                }
+            }
+            radioSim.addEventListener("click", toggleAgendamento);
+            radioNao.addEventListener("click", toggleAgendamento);
+            toggleAgendamento();
+        })
+
+        document.getElementById('turma').addEventListener('change', function () {
+            var alunoSelect = document.getElementById('aluno');
+            var iconeAluno = document.querySelectorAll('#add-aluno')
+            if (this.value !== "") {
+                alunoSelect.disabled = false;
+                for (var i = 0; i < iconeAluno.length; i++) {
+                    iconeAluno[i].setAttribute('style', 'display: block;')
+                }
+            } else {
+                alunoSelect.disabled = true;
+                alunoSelect.value = "";
+            }
+        });
+
+        document.getElementById('turma').addEventListener('change', function () {
+            var alunoSelects = document.querySelectorAll('.aluno-select');
+            alunoSelects.forEach(function (select) {
+                if (this.value !== "") {
+                    select.disabled = false;
+                } else {
+                    select.disabled = true;
+                    select.value = "";
+                }
+            }, this);
+        });
+
+        $(document).ready(function () {
+            var i = 1;
+
+            $('#add-aluno').click(function () {
+                var aluno = $('#container-aluno').clone();
+                aluno.attr('id', `aluno_${i}`);
+                aluno.find('select').attr('id', `aluno_${i}`).val("");
+                aluno.find('.remove-aluno').attr('id', `remove-aluno_${i}`);
+                $('#divAluno').append(aluno);
+                i++;
+            });
+
+            $(document).on('click', '.remove-aluno', function () {
+                $(this).closest('.container-select').remove();
+            });
+        });
+
+
+    </script>
+</body>
+
+</html>

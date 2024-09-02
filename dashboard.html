@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAE - Sistema de Acompanhamento Educacional</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="icon" href="assets/img/SAE e Logo (1).png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container-Nav">
+            <div class="logoIF">
+                <img src="assets/img/logo_horizontal_ifsudestemg(2).png" alt="" srcset="" class="logo">
+            </div>
+            <div class="profile">
+                <i class="fas fa-user-circle" aria-hidden="true" style="font-size: 30px;"></i> 
+                <div class="profile-name">João Silva</div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+
+        <div class="sidebar">
+            <div class="logo">
+                <img src="assets/img/logo_vertical_sae.png" alt="" class="logo" id="logoSAE">
+            </div>
+            <ul class="menu">
+                <li><a href="#alunos"><i class="fas fa-user-graduate"></i> <span>Alunos</span></a></li>
+                <li><a href="#turmas"><i class="fas fa-users"></i> <span>Turmas</span></a></li>
+                <li><a href="#cursos"><i class="fas fa-graduation-cap"></i> <span>Cursos</span></a></li>
+                <li><a href="#docentes"><i class="fas fa-chalkboard-teacher"></i> <span>Docentes</span></a></li>
+                <li id="botaoCadastrado"><a href="cadastradoServidor.html?user=Servidor"><i class="fas fa-address-card"></i><span> Servidores</span></a></li>
+                <li id="botaoCadastrado"><a href="cadastradoResponsavel.html"><i class="fas fa-address-book"></i><span> Responsáveis</span></a></li>
+                <li><a href="#setores"><i class="fas fa-building"></i> <span>Setores</span></a></li>
+                <li><a href="#departamentos"><i class="fas fa-sitemap"></i> <span>Departamentos</span></a></li>
+                <li><a href="#disciplinas"><i class="fas fa-book"></i> <span>Disciplinas</span></a></li>
+                <li><a href="registros.html"><i class="fas fa-pen"></i> <span>Registros</span></a></li>
+                <li><a href="agendamentos.html"><i class='fas fa-clock'></i><span> Agendamentos </span></a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <div class="performance-section">
+                <h2>Painel</h2>
+                <div class="charts">
+                    <div class="chart" id="chart1">
+                        <canvas id="performanceChart1"></canvas>
+                    </div>
+                    <div class="chart" id="chart2">
+                        <canvas id="performanceChart2"></canvas>
+                    </div>
+                    <div class="chart" id="chart3">
+                        <canvas id="performanceChart3"></canvas>
+                    </div>
+                </div>
+                <div class="stats-section">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2v-2h2v2z" />
+                            </svg>
+                        </div>
+                        <div class="stat-value">15</div>
+                        <div class="stat-label">Total Reguistros</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2v-2h2v2z" />
+                            </svg>
+                        </div>
+                        <div class="stat-value">3,5</div>
+                        <div class="stat-label">Registros Por Dia</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2v-2h2v2z" />
+                            </svg>
+                        </div>
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Registros Turma 1</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const ctx1 = document.getElementById('performanceChart1').getContext('2d');
+        const performanceChart1 = new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['Turma 1', 'Turma 2', 'Turma 3', 'Turma 4', 'Turma 5', 'Turma 6', 'Turma 7', 'Turma 8'],
+                datasets: [{
+                    label: 'Total Registros Semanal',
+                    data: [2, 7, 0, 9, 5, 3, 1, 9],
+                    backgroundColor: [
+                        'rgba(20, 125, 38, 0.8)',
+                        'rgba(34, 153, 84, 0.8)',
+                        'rgba(60, 179, 113, 0.8)',
+                        'rgba(85, 107, 47, 0.8)',
+                        'rgba(107, 142, 35, 0.8)',
+                        'rgba(154, 205, 50, 0.8)',
+                        'rgba(143, 188, 143, 0.8)',
+                        'rgba(46, 139, 87, 0.8)'
+                    ],
+                    borderColor: 'rgba(20, 125, 38)',
+                    borderWidth: 1,
+                    fill: false
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const ctx2 = document.getElementById('performanceChart2').getContext('2d');
+        const performanceChart2 = new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Total Registros Anual',
+                    data: [8, 10, 17, 23, 12, 8],
+                    borderColor: 'rgba(20, 125, 38)',
+                    borderWidth: 1,
+                    fill: false
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const ctx3 = document.getElementById('performanceChart3').getContext('2d');
+        const performanceChart3 = new Chart(ctx3, {
+            type: 'line',
+            data: {
+                labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov'],
+                datasets: [{
+                    label: 'Registro',
+                    data: [100, 40, 60, 20, 90],
+                    borderColor: 'rgba(20, 125, 38)',
+                    borderWidth: 1,
+                    fill: false
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        function obterParametro(nome) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(nome);
+        }
+        const usuario = obterParametro('user');
+        console.log(usuario)
+        if(usuario=='ServidorGAE'){
+            const botao=document.getElementById('botaoCadastrado')
+            botao.setAttribute('style','display:none;')
+        }
+    </script>
+</body>
+
+</html>
