@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+th{
+    width: 100vw;
+}
+
+.container-select{
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
+
+.fas {
+    font-size: 20px; 
+    cursor: pointer;
+}

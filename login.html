@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAE - Sistema de Acompanhamento Educacional</title>
+    <link rel="icon" href="assets/img/SAE e Logo (1).png" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <img src="assets/img/logo_horizontal_ifsudestemg(2).png" alt="Logo IF Sudeste MG" class="logo">
+        </header>
+        <div class="main-content">
+            <div class="illustration">
+                <img src="" alt="Ilustração Educacional">
+            </div>
+            <div class="form">
+                <h2>Bem-vindo ao SAE</h2>
+                <form action="">
+                    <input type="text" id="username" name="username" placeholder="Usuário" required>
+                    <input type="password" id="password" name="password" placeholder="Senha">
+                    <button type="submit" onclick="login()">Entrar</button>
+                    <button type="button" class="google-login">
+                        <img src="assets/img/google.jpg" alt="Google logo">
+                        Entrar com Google
+                    </button>
+                    <a href="#" id="esqueceuSenha">Esqueceu a senha?</a>
+                    <hr>
+                </form>
+                <a href="criarConta.html"><button type="button" id="criarConta" style="width: 100%;">Criar conta</button></a>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        function login(){
+            const userName = document.getElementById('username').value
+            if(userName=='Responsável'){
+                window.open('responsavel.html', '_blank')
+            }else if(userName== 'Psicologa'){
+                window.open('psicologa.html')
+            }else if(userName == 'Docente' || userName == 'Pedagoga'){
+                window.open('registros.html')
+            }else if(userName == 'Coordenador'){
+                window.open('registros.html')
+            } else if (userName === 'ServidorGAE' || userName === 'ServidorCGAE') {
+                window.open(`dashboard.html?user=${encodeURIComponent(userName)}`);
+            }
+        }
+    </script>
+</body>
+</html>
